@@ -2,7 +2,7 @@
 
 void initSVG(FILE*, int);
 
-void ecrireSVG(NODE, FILE*, CRAYON);
+void ecrireSVG(NODE, FILE*, CRAYON, int);
 
 void fermerSVG(FILE*);
 

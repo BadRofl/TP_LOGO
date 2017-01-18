@@ -4,7 +4,7 @@
 #include "SVG.h"
 
 
-#define TAILLE 1000
+#define TAILLE 400
 
 void creerSVG(NODE root){
 	FILE *sortieSVG = fopen("logo.svg", "w");	
@@ -19,7 +19,7 @@ void creerSVG(NODE root){
 	affichage(root, 0);
 	printf("__________\n\n");
 	
-	ecrireSVG(root, sortieSVG, cray);
+	ecrireSVG(root, sortieSVG, cray, 0);
 	
 	fermerSVG(sortieSVG);
 	fermerCrayon(cray);
@@ -89,7 +89,6 @@ void affichage(NODE noeu, int tab){
 	
 	int i =0;
 	if(noeu != NULL){
-		if(type(noeu) != 4){
 			for(i=0;i<tab;i++){
 			printf("\t");
 			}
@@ -102,6 +101,16 @@ void affichage(NODE noeu, int tab){
 				printf("\t");
 				}
 				printf(" ]\n");
+			}else if(type(noeu) == 4){
+				printf("SPIRAL %d [\n ",value(noeu));
+				NODE stock= NULL;
+				stock = ssProg(noeu);
+				affichage(stock,tab+1);
+				for(i=0;i<tab+1;i++){
+				printf("\t");
+				}
+				printf(" ]\n");
+				
 			}else{
 				if(type(noeu) == 0){
 					printf("FORWARD ");
@@ -113,9 +122,6 @@ void affichage(NODE noeu, int tab){
 				printf("%d\n",value(noeu));
 			}
 		affichage(suivant(noeu), tab);
-		}else{
-			printf("WHAT HAVE YOU DONE\nFLY YOU FOOLS\n");
-		}
 	}
 }
 

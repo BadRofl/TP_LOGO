@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall
 
 	
-all : flex svg.o logo.o crayon.o
+all : flex SVG.c LOGO.c CRAYON.c logo.o svg.o crayon.o
 	$(CC) lex.yy.c ParseurLOGO.tab.c logo.o svg.o crayon.o -o LOGO -lm
 	
 test : svg.o logo.o crayon.o test.o

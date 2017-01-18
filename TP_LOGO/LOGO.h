@@ -1,8 +1,8 @@
 typedef enum{
-	FORWARD, REPEAT, LEFT, RIGHT, RAINBOW
+	FORWARD, REPEAT, LEFT, RIGHT, SPIRAL
 } TYPE;
 
-static char *enumStrings[5] = {"FORWARD", "REPEAT", "LEFT", "RIGHT", "RAINBOW"};
+static char *enumStrings[5] = {"FORWARD", "REPEAT", "LEFT", "RIGHT", "SPIRAL"};
 
 struct node{
 TYPE type;

@@ -18,7 +18,7 @@ int yywrap(){
 %token TOK_LFT
 %token TOK_RGT
 %token TOK_NBR
-%token TOK_RBD
+%token TOK_SPIRAL
 
 %union{
 	NODE node;
@@ -26,7 +26,7 @@ int yywrap(){
 	int value;
 }
 
-%type <type> TOK_FWD TOK_RPT TOK_LFT TOK_RGT TOK_RBD
+%type <type> TOK_FWD TOK_RPT TOK_LFT TOK_RGT TOK_SPIRAL 
 %type <node> FILE PROG INST
 %type <value> TOK_NBR
 %start FILE
@@ -48,8 +48,8 @@ INST : TOK_FWD TOK_NBR
 	{$$=newNode(NULL,NULL,$2,RIGHT);}
 	|TOK_RPT TOK_NBR '[' PROG ']'
 	{$$=newNode(NULL,$4,$2,REPEAT);}
-	|TOK_RBD
-	{$$ = newNode(NULL,NULL,0,RAINBOW);}
+	|TOK_SPIRAL TOK_NBR '[' PROG ']'
+	{$$=newNode(NULL,$4,$2,SPIRAL);}
 %%
 
 int main(){
