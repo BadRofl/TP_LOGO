@@ -19,11 +19,15 @@ int yywrap(){
 %token TOK_RGT
 %token TOK_NBR
 %token TOK_SPIRAL
+%token TOK_CENTER
+%token TOK_COLOR
 
 %union{
 	NODE node;
 	TYPE type;
 	int value;
+	int value2;
+	int value3;
 }
 
 %type <type> TOK_FWD TOK_RPT TOK_LFT TOK_RGT TOK_SPIRAL 
@@ -41,15 +45,19 @@ PROG : INST
 	{$$=addNode($2,$1);}
 
 INST : TOK_FWD TOK_NBR
-	{$$=newNode(NULL,NULL,$2,FORWARD);}
+	{$$=newNode(NULL,NULL,$2,0,0,FORWARD);}
+	|TOK_CENTER TOK_NBR TOK_NBR
+	{$$=newNode(NULL,NULL,0,$2,$3,CENTER);}
+	|TOK_COLOR TOK_NBR TOK_NBR TOK_NBR
+	{$$=newNode(NULL,NULL,$2,$3,$4,COLOR);}
 	|TOK_LFT TOK_NBR
-	{$$=newNode(NULL,NULL,$2,LEFT);}
+	{$$=newNode(NULL,NULL,$2,0,0,LEFT);}
 	|TOK_RGT TOK_NBR
-	{$$=newNode(NULL,NULL,$2,RIGHT);}
+	{$$=newNode(NULL,NULL,$2,0,0,RIGHT);}
 	|TOK_RPT TOK_NBR '[' PROG ']'
-	{$$=newNode(NULL,$4,$2,REPEAT);}
+	{$$=newNode(NULL,$4,$2,0,0,REPEAT);}
 	|TOK_SPIRAL TOK_NBR '[' PROG ']'
-	{$$=newNode(NULL,$4,$2,SPIRAL);}
+	{$$=newNode(NULL,$4,$2,0,0,SPIRAL);}
 %%
 
 int main(){

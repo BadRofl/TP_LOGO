@@ -5,12 +5,15 @@
 
 #define PI 3.14159
 
-CRAYON initCrayon(double posH, double posV, double angle){
+CRAYON initCrayon(double posH, double posV, double angle, int R, int G, int B){
 	 CRAYON cray = (CRAYON)malloc(sizeof(*cray));
 	 
 	 cray -> posH = posH;
 	 cray -> posV = posV;
 	 cray -> angle = angle;
+	 cray -> R = R;
+	 cray -> G = G;
+	 cray -> B = B;
 	 
 	 return cray;
 	 
@@ -24,32 +27,54 @@ void fermerCrayon(CRAYON cray){
 }
 
 double crayonPosH(CRAYON cray, int valeur){
-	double posH = getposH(cray) + valeur * cos(getangle(cray));
-	cray->posH = posH;
+	if(cray != NULL){
+		double posH = getposH(cray) + valeur * cos(getangle(cray));
+		cray->posH = posH;
 	
-	return posH;
+		return posH;
+	}
 }
 
 double crayonPosV(CRAYON cray, int valeur){
-	double posV = getposV(cray) + valeur * sin(getangle(cray));
-	cray->posV = posV;
+	if(cray != NULL){
+		double posV = getposV(cray) + valeur * sin(getangle(cray));
+		cray->posV = posV;
 	
-	return posV;
-
+		return posV;
+	}
 }
 
 double crayonAngleL(CRAYON cray, int valeur){
-	double angle = getangle(cray) - ((PI*valeur)/180.0);
-	cray->angle = angle;
+	if(cray != NULL){
+		double angle = getangle(cray) - ((PI*valeur)/180.0);
+		cray->angle = angle;
 	
-	return angle;
+		return angle;
+	}
 }
 
 double crayonAngleR(CRAYON cray, int valeur){
-	double angle = getangle(cray) + ((PI*valeur)/180.0);
-	cray->angle = angle;
+	if(cray != NULL){
+		double angle = getangle(cray) + ((PI*valeur)/180.0);
+		cray->angle = angle;
 	
-	return angle;
+		return angle;
+	}
+}
+
+void crayonColor(CRAYON cray, int R, int G, int B){
+	if(cray != NULL){
+		cray->R = R;
+		cray->G = G;
+		cray->B = B;
+	}	
+}
+
+void crayonCenter(CRAYON cray, int H, int V){
+	if(cray != NULL){
+		cray->posH = H;
+		cray->posV = V;
+	}
 }
 	
 
@@ -68,6 +93,24 @@ double getposV(CRAYON cray){
 double getangle(CRAYON cray){
 	if(cray != NULL){
 		return cray->angle;
+	}
+}
+
+int getR(CRAYON cray){
+	if(cray != NULL){
+		return cray->R;
+	}
+}
+
+int getG(CRAYON cray){
+	if(cray != NULL){
+		return cray->G;
+	}
+}
+
+int getB(CRAYON cray){
+	if(cray != NULL){
+		return cray->B;
 	}
 }
 

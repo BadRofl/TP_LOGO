@@ -1,1 +1,2 @@
-SPI 20 [ Forward 20 Left 40 SPI 20 [ Forward 80 Left 40 ] ] 
+CENTER 200 300 
+SPI 20 [ Forward 20 Left 40   SPI 20 [ COLOR 200 0 0 Forward 80 Left 40 ] ] 

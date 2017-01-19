@@ -12,7 +12,7 @@ void creerSVG(NODE root){
 	double centreV = TAILLE/2;
 	CRAYON cray;
 	
-	cray = initCrayon(centreH,centreV,0);
+	cray = initCrayon(centreH,centreV,0, 250, 50, 80);
 	initSVG(sortieSVG, TAILLE);
 	
 	printf("Programme entré : \n\n");
@@ -26,11 +26,13 @@ void creerSVG(NODE root){
 	fermerNode(root);
 }
 
-NODE newNode(NODE suivant, NODE subProg, int value, TYPE type){
+NODE newNode(NODE suivant, NODE subProg, int value, int value2, int value3, TYPE type){
 	//printf("Nouvelle node\n");
 	NODE ret = (NODE)malloc(sizeof(*ret));
 	ret->type = type;
 	ret->value = value;
+	ret->value2 = value2;
+	ret->value3 = value3;
 	ret->suivant = suivant;
 	ret->subProg = subProg;
 	
@@ -79,6 +81,18 @@ int value(NODE noeu){
 	}
 }
 
+int value2(NODE noeu){
+	if(noeu != NULL){
+		return noeu->value2;
+	}
+}
+
+int value3(NODE noeu){
+	if(noeu != NULL){
+		return noeu->value3;
+	}
+}
+
 TYPE type(NODE noeu){
 	if(noeu != NULL){
 		return noeu->type;
@@ -110,6 +124,11 @@ void affichage(NODE noeu, int tab){
 				printf("\t");
 				}
 				printf(" ]\n");
+			}else if(type(noeu) == 5){
+				printf("CENTER : %d : %d \n ",value2(noeu), value3(noeu));
+					
+			}else if(type(noeu) == 6){
+				printf("COLOR : %d:%d:%d \n ",value(noeu), value2(noeu), value3(noeu));
 				
 			}else{
 				if(type(noeu) == 0){

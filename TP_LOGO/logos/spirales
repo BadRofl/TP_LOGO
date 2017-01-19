@@ -1,0 +1,3 @@
+CEN 200 300
+COL 250 0 0
+SPI 40 [ Forward 20 Left 34 repeat 20 [ Forward 100 Left 40 ] ] 

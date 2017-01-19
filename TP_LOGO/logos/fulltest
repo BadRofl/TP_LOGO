@@ -1,0 +1,33 @@
+//This program tests every function
+
+
+//A circle
+Color 200 0 0 CEN 100 100
+REPEAT 10 [ forward 10 left 36 ]
+
+//Another one
+Color 0 255 0 CEN 100 200
+REPEAT 10 [ forward 10 RGT 36 ]
+
+//A spiral
+Color 50 25 200 CEN 100 300
+SPI 10 [ forward 10 RGT 36 ]
+
+//More Spirals
+Color 50 25 200 CENTER 200 100
+Repeat 4 [ SPI 10 [ forward 10 RGT 36 ] ]
+
+//Wierd thing?
+CENTER 200 200
+RPT 40 [ SPIRAL 4 [ Color 50 25 200 FORWARD 5 LEFT 12 Color 0 255 0 FORWARD 7 RIGHT 22 ] ]
+
+//Abusing the spirals
+CENTER 200 300
+SPIRAL 15 [RGT 20  FWD 10 SPIRAL 10 [ LFT 15 FWD 5 SPIRAL 5  [ FWD 20 Left 45 ]]]
+
+//Abusing both repeat and spirals
+CEN 300 100
+Spiral 20 [ Color 50 25 200 FWD 10 LEFT 36 REPEAT 10 [ Color 200 25 50 Forward 10 RIGHT 40 ] ]
+
+
+

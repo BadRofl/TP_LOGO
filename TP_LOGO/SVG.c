@@ -8,6 +8,7 @@
 
 void initSVG(FILE *svg, int taille){
 	fprintf(svg,"<?xml version=\"1.0\" encoding=\"utf-8\"?><svg xmlns=\"http://www.w3.org/2000/svg\" version=\"1.1\" width=\"%d\" height=\"%d\"><title>Dessin généré par un parseur LOGO</title>" , taille, taille);
+	fprintf(svg,"<rect x=\"0px\" y=\"0px\" width=\"400\" height=\"400\"/>");
 }
 
 void ecrireSVG(NODE root, FILE *svg, CRAYON cray, int ite){
@@ -18,10 +19,13 @@ void ecrireSVG(NODE root, FILE *svg, CRAYON cray, int ite){
 				double posV;
 				double finH;
 				double finV;
+				int R;
+				int G;
+				int B;
 				
-				int R = 50;
-				int G = 50;
-				int B = 200;
+				R = getR(cray);
+				G = getG(cray);
+				B = getB(cray);
 				
 				posH = getposH(cray);
 				posV = getposV(cray);
@@ -35,6 +39,14 @@ void ecrireSVG(NODE root, FILE *svg, CRAYON cray, int ite){
 			else if(type(root) == 2){
 				//printf("LEFT\n");
 				crayonAngleL(cray, value(root));
+			}
+			else if(type(root) == 5){
+				//printf("CENTER\n");
+				crayonCenter(cray,value2(root), value3(root));
+			}
+			else if(type(root) == 6){
+				//printf("COLOR\n");
+				crayonColor(cray, value(root),value2(root),value3(root));
 			}
 			else if(type(root) == 3){
 				//printf("RIGHT\n");
