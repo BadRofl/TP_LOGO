@@ -5,11 +5,11 @@
 %}
 
 %%
-(F|f)(O|o)(R|r)(W|w)(A|a)(R|r)(D|d)  return TOK_FWD; 
-(R|r)(E|e)(P|p)(E|e)(A|a)(T|t)       return TOK_RPT;
-(L|l)(E|e)(F|f)(T|t) 				 return TOK_LFT;
-(R|r)(I|i)(G|g)(H|h)(T|t)   		 return TOK_RGT;
-(S|s)(P|p)(I|i)(R|r)(A|a)(L|l)		 return TOK_SPIRAL;
+(F|f)(O|o)(R|r)(W|w)(A|a)(R|r)(D|d)|FWD  return TOK_FWD; 
+(R|r)(E|e)(P|p)(E|e)(A|a)(T|t)|RPT       return TOK_RPT;
+(L|l)(E|e)(F|f)(T|t)|LFT 				 return TOK_LFT;
+(R|r)(I|i)(G|g)(H|h)(T|t)|RGT   		 return TOK_RGT;
+(S|s)(P|p)(I|i)(R|r)(A|a)(L|l)|SPI		 return TOK_SPIRAL;
 
 "[" 							{return '[';}      
 "]"	   							{return ']';} 
